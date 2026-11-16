@@ -59,7 +59,7 @@ print(importances.head(10).to_string(index=False))
 conn = sqlite3.connect("bank.db")
 df_clean.to_sql("customers", conn, index=False, if_exists="replace")
 
-#Get the yes rate
+#Gets the yes rate
 job_query = """
 SELECT job, COUNT(*) AS n, ROUND(AVG(y) * 100, 1) AS yes_rate_pct
 FROM customers
@@ -96,8 +96,6 @@ FROM customers
 GROUP BY age_group
 ORDER BY yes_rate_pct DESC
 """
-
-#print(pd.read_sql(age_group_query, conn))
 
 #Make the charts
 
